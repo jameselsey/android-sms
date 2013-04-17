@@ -7,6 +7,16 @@
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+    android:text="STATE"
+    android:id="@+id/state" android:gravity="center_horizontal" android:textSize="25dip"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Start Listening"
+            android:id="@+id/btnStartListening" android:onClick="startListening"/>
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Stop Listening"
+            android:id="@+id/btnStopListening" android:onClick="stopListening"/>
 </LinearLayout>

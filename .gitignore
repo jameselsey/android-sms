@@ -4,6 +4,9 @@
 *.jar
 *.war
 *.ear
+*.iml
+
+.idea/
 
 androidsms/target/
 androidsms-it/target/
