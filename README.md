@@ -1,0 +1,4 @@
+android-sms
+===========
+
+Sms notifier
