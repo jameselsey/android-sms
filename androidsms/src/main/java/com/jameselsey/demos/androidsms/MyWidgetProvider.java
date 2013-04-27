@@ -45,10 +45,12 @@ public class MyWidgetProvider extends AppWidgetProvider {
             if (STATE) {
                 Log.d(TAG, "ENABLED -> DISABLED");
                 STATE = false;
+                remoteViews.setImageViewResource(R.id.backgroundImage, R.drawable.disabledshape);
                 remoteViews.setTextViewText(R.id.txtStatus, "DISABLED");
             } else {
                 Log.d(TAG, "DISABLED -> ENABLED");
                 STATE = true;
+                remoteViews.setImageViewResource(R.id.backgroundImage, R.drawable.enabledshape);
                 remoteViews.setTextViewText(R.id.txtStatus, "ENABLED");
             }
         }
