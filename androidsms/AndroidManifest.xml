@@ -23,6 +23,14 @@
           </intent-filter>
       </receiver>
 
+      <receiver android:name=".StateReceiver" android:exported="true" android:enabled="true">
+          <intent-filter android:priority="1000">
+              <action android:name="INIT_STATE" />
+              <action android:name="TOGGLE_STATE" />
+          </intent-filter>
+      </receiver>
+
+      <service android:name=".UpdateWidgetService" />
       <!-- WIDGET-->
       <receiver android:name="MyWidgetProvider" >
           <intent-filter >
