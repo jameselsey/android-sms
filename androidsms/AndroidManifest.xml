@@ -22,20 +22,6 @@
               <action android:name="android.provider.Telephony.SMS_RECEIVED" />
           </intent-filter>
       </receiver>
-
-      <!-- WIDGET-->
-      <receiver android:name="MyWidgetProvider" >
-          <intent-filter >
-              <action
-                      android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-              <action android:name="com.jameselsey.demos.androidsms.MyWidgetProvider.ACTION"/>
-          </intent-filter>
-
-          <meta-data
-                  android:name="android.appwidget.provider"
-                  android:resource="@xml/widgetinfo" />
-      </receiver>
-
   </application>
 
 </manifest>
