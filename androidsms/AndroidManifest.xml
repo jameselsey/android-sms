@@ -17,6 +17,8 @@
       </intent-filter>
     </activity>
 
+      <service android:name=".SpeakerService"/>
+
       <receiver android:name=".SmsReceiver" android:exported="true" android:enabled="false">
           <intent-filter android:priority="1000">
               <action android:name="android.provider.Telephony.SMS_RECEIVED" />
