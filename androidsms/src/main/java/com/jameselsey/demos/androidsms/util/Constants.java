@@ -1,4 +1,4 @@
-package com.jameselsey.demos.androidsms;
+package com.jameselsey.demos.androidsms.util;
 
 public class Constants {
 

@@ -1,4 +1,4 @@
-package com.jameselsey.demos.androidsms;
+package com.jameselsey.demos.androidsms.domain;
 
 import android.os.Parcel;
 import android.os.Parcelable;

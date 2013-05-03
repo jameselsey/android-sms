@@ -1,4 +1,4 @@
-package com.jameselsey.demos.androidsms;
+package com.jameselsey.demos.androidsms.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -10,6 +10,10 @@ import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.jameselsey.demos.androidsms.R;
+import com.jameselsey.demos.androidsms.receiver.SmsReceiver;
+import com.jameselsey.demos.androidsms.util.TtsWrapper;
+import com.jameselsey.demos.androidsms.util.Constants;
 
 import static java.lang.String.format;
 

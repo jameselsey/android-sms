@@ -1,7 +1,9 @@
-package com.jameselsey.demos.androidsms;
+package com.jameselsey.demos.androidsms.activity;
 
 import android.widget.Button;
 import android.widget.TextView;
+import com.jameselsey.demos.androidsms.R;
+import com.jameselsey.demos.androidsms.activity.DefaultActivity;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import org.junit.Before;
 import org.junit.Test;

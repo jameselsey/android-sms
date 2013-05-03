@@ -1,8 +1,9 @@
-package com.jameselsey.demos.androidsms;
+package com.jameselsey.demos.androidsms.util;
 
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import com.jameselsey.demos.androidsms.util.Constants;
 
 
 public class TtsWrapper {

@@ -1,4 +1,4 @@
-package com.jameselsey.demos.androidsms;
+package com.jameselsey.demos.androidsms.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
+import com.jameselsey.demos.androidsms.service.SpeakerService;
+import com.jameselsey.demos.androidsms.domain.Sms;
+import com.jameselsey.demos.androidsms.util.Constants;
 
 import java.util.ArrayList;
 

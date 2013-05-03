@@ -1,7 +1,7 @@
 package com.jameselsey.demos.androidsms.test;
 
 import android.test.ActivityInstrumentationTestCase2;
-import com.jameselsey.demos.androidsms.*;
+import com.jameselsey.demos.androidsms.activity.DefaultActivity;
 
 public class DefaultActivityTest extends ActivityInstrumentationTestCase2<DefaultActivity> {
 
