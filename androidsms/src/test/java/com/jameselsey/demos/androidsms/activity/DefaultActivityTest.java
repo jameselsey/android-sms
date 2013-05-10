@@ -1,9 +1,8 @@
 package com.jameselsey.demos.androidsms.activity;
 
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.jameselsey.demos.androidsms.R;
-import com.jameselsey.demos.androidsms.activity.DefaultActivity;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,16 +15,14 @@ import static org.junit.Assert.assertThat;
 public class DefaultActivityTest
 {
     private DefaultActivity defaultActivity;
-    private Button btnStartListening;
-    private Button btnStopListening;
+    private ImageView toggleState;
     private TextView state;
 
     @Before
     public void setUp() throws Exception {
         defaultActivity = new DefaultActivity();
         defaultActivity.onCreate(null);
-        btnStartListening = (Button) defaultActivity.findViewById(R.id.btnStartListening);
-        btnStopListening = (Button) defaultActivity.findViewById(R.id.btnStopListening);
+        toggleState = (ImageView) defaultActivity.findViewById(R.id.toggleState);
         state = (TextView) defaultActivity.findViewById(R.id.state);
     }
 
@@ -37,37 +34,11 @@ public class DefaultActivityTest
 
     @Test
     public void canChangeStateByClickingStartAndStop(){
-        // Verify that you can start
-        btnStartListening.performClick();
+        // check it starts in disabled
+        assertThat(state.getText().toString(), equalTo("DISABLED"));
+
+        toggleState.performClick();
         assertThat(state.getText().toString(), equalTo("ENABLED"));
 
-        // Stop it
-        btnStopListening.performClick();
-        assertThat(state.getText().toString(), equalTo("DISABLED"));
     }
-
-    @Test
-    public void clickingStartMultipleTimesHasNoEffect(){
-        btnStartListening.performClick();
-        assertThat(state.getText().toString(), equalTo("ENABLED"));
-
-        btnStartListening.performClick();
-        assertThat(state.getText().toString(), equalTo("ENABLED"));
-
-        btnStartListening.performClick();
-        assertThat(state.getText().toString(), equalTo("ENABLED"));
-    }
-
-    @Test
-    public void clickingStopMultipleTimesHasNoEffect(){
-        btnStopListening.performClick();
-        assertThat(state.getText().toString(), equalTo("DISABLED"));
-
-        btnStopListening.performClick();
-        assertThat(state.getText().toString(), equalTo("DISABLED"));
-
-        btnStopListening.performClick();
-        assertThat(state.getText().toString(), equalTo("DISABLED"));
-    }
-
 }

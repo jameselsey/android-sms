@@ -5,9 +5,11 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.jameselsey.demos.androidsms.R;
@@ -23,6 +25,7 @@ public class DefaultActivity extends Activity {
     private final String TAG = format("%s - %s - ", Constants.APP_LOG_NAME, getClass().getSimpleName());
 
     private TextView tv;
+    private ImageView stateImage;
     private PackageManager packageManager;
     private ComponentName compName;
 
@@ -41,13 +44,12 @@ public class DefaultActivity extends Activity {
         int componentEnabledState = packageManager.getComponentEnabledSetting(compName);
 
         tv = (TextView) findViewById(R.id.state);
+        stateImage = (ImageView) findViewById(R.id.toggleState);
 
         if (componentEnabledState == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
-            tv.setText("ENABLED");
-            tv.setTextColor(Color.GREEN);
+            updateUiAsEnabled();
         } else {    // assume disabled
-            tv.setText("DISABLED");
-            tv.setTextColor(Color.RED);
+            updateUiAsDisabled();
         }
     }
 
@@ -75,22 +77,45 @@ public class DefaultActivity extends Activity {
         }
     }
 
-    public void startListening(View v) {
+    public void toggleStateClicked(View v){
+        int componentEnabledState = packageManager.getComponentEnabledSetting(compName);
+        if (componentEnabledState == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
+            stopListening();
+        } else {
+            startListening();
+        }
+    }
+
+    private void startListening() {
         TtsWrapper.startTts(this, new TextToSpeech.OnInitListener() {
             public void onInit(int status) {
                 Toast.makeText(DefaultActivity.this, "TTS started", Toast.LENGTH_SHORT).show();
             }
         });
         setListenerState(PackageManager.COMPONENT_ENABLED_STATE_ENABLED);
-        tv.setText("ENABLED");
-        tv.setTextColor(Color.GREEN);
+        updateUiAsEnabled();
     }
 
-    public void stopListening(View v) {
+    private void stopListening() {
         TtsWrapper.finishUsingTts();
         setListenerState(PackageManager.COMPONENT_ENABLED_STATE_DISABLED);
+        updateUiAsDisabled();
+    }
+
+    private void updateUiAsDisabled() {
         tv.setText("DISABLED");
         tv.setTextColor(Color.RED);
+        Drawable drawable = getResources().getDrawable(R.drawable.disabled_button);
+        stateImage.setImageDrawable(drawable);
+        stateImage.setTag(R.drawable.disabled_button);
+    }
+
+    private void updateUiAsEnabled() {
+        tv.setText("ENABLED");
+        tv.setTextColor(Color.GREEN);
+        Drawable drawable = getResources().getDrawable(R.drawable.enabled_button);
+        stateImage.setImageDrawable(drawable);
+        stateImage.setTag(R.drawable.enabled_button);
     }
 
     private void setListenerState(int state) {

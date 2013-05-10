@@ -1,9 +1,11 @@
 package com.jameselsey.demos.androidsms.test;
 
 import android.test.ActivityInstrumentationTestCase2;
+import com.jameselsey.demos.androidsms.R;
 import com.jameselsey.demos.androidsms.activity.DefaultActivity;
 import com.jayway.android.robotium.solo.Solo;
 
+import static org.fest.assertions.api.Assertions.assertThat;
 
 public class DefaultActivityTest extends ActivityInstrumentationTestCase2<DefaultActivity> {
 
@@ -23,6 +25,7 @@ public class DefaultActivityTest extends ActivityInstrumentationTestCase2<Defaul
     @Override
     public void tearDown() throws Exception {
         solo.finishOpenedActivities();
+
     }
 
     public void testGetActivity() {
@@ -32,20 +35,24 @@ public class DefaultActivityTest extends ActivityInstrumentationTestCase2<Defaul
 
     public void testAppStartsInDisabledMode() {
         assertTrue(solo.searchText("DISABLED"));
+        assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.disabled_button);
     }
 
     public void testEnableSmsMonitoring() {
-        solo.clickOnButton("Start Listening");
+        solo.clickOnImage(0);
         assertTrue(solo.searchText("ENABLED"));
+        assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.enabled_button);
     }
 
     public void testDisableSmsMonitoring() {
         // enable it first
-        solo.clickOnButton("Start Listening");
+        solo.clickOnImage(0);
         assertTrue(solo.searchText("ENABLED"));
+        assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.enabled_button);
 
-        solo.clickOnButton("Stop Listening");
+        solo.clickOnImage(0);
         assertTrue(solo.searchText("DISABLED"));
+        assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.disabled_button);
     }
 }
 
