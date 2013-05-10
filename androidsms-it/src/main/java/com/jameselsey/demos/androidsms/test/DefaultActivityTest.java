@@ -34,24 +34,20 @@ public class DefaultActivityTest extends ActivityInstrumentationTestCase2<Defaul
     }
 
     public void testAppStartsInDisabledMode() {
-        assertTrue(solo.searchText("DISABLED"));
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.disabled_button);
     }
 
     public void testEnableSmsMonitoring() {
         solo.clickOnImage(0);
-        assertTrue(solo.searchText("ENABLED"));
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.enabled_button);
     }
 
     public void testDisableSmsMonitoring() {
         // enable it first
         solo.clickOnImage(0);
-        assertTrue(solo.searchText("ENABLED"));
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.enabled_button);
 
         solo.clickOnImage(0);
-        assertTrue(solo.searchText("DISABLED"));
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.disabled_button);
     }
 }

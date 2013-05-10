@@ -4,11 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="STATE"
-    android:id="@+id/state" android:gravity="center_horizontal" android:textSize="25dip"/>
     <ImageView
             android:layout_width="250dip"
             android:layout_height="250dip"

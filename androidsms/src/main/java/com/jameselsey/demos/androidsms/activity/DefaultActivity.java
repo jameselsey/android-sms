@@ -4,18 +4,16 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.jameselsey.demos.androidsms.R;
 import com.jameselsey.demos.androidsms.receiver.SmsReceiver;
-import com.jameselsey.demos.androidsms.util.TtsWrapper;
 import com.jameselsey.demos.androidsms.util.Constants;
+import com.jameselsey.demos.androidsms.util.TtsWrapper;
 
 import static java.lang.String.format;
 
@@ -23,8 +21,6 @@ public class DefaultActivity extends Activity {
 
     private static final int MY_DATA_CHECK_CODE = 1234;
     private final String TAG = format("%s - %s - ", Constants.APP_LOG_NAME, getClass().getSimpleName());
-
-    private TextView tv;
     private ImageView stateImage;
     private PackageManager packageManager;
     private ComponentName compName;
@@ -43,7 +39,6 @@ public class DefaultActivity extends Activity {
         compName = new ComponentName(getApplicationContext(), SmsReceiver.class);
         int componentEnabledState = packageManager.getComponentEnabledSetting(compName);
 
-        tv = (TextView) findViewById(R.id.state);
         stateImage = (ImageView) findViewById(R.id.toggleState);
 
         if (componentEnabledState == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
@@ -77,7 +72,7 @@ public class DefaultActivity extends Activity {
         }
     }
 
-    public void toggleStateClicked(View v){
+    public void toggleStateClicked(View v) {
         int componentEnabledState = packageManager.getComponentEnabledSetting(compName);
         if (componentEnabledState == PackageManager.COMPONENT_ENABLED_STATE_ENABLED) {
             stopListening();
@@ -103,16 +98,12 @@ public class DefaultActivity extends Activity {
     }
 
     private void updateUiAsDisabled() {
-        tv.setText("DISABLED");
-        tv.setTextColor(Color.RED);
         Drawable drawable = getResources().getDrawable(R.drawable.disabled_button);
         stateImage.setImageDrawable(drawable);
         stateImage.setTag(R.drawable.disabled_button);
     }
 
     private void updateUiAsEnabled() {
-        tv.setText("ENABLED");
-        tv.setTextColor(Color.GREEN);
         Drawable drawable = getResources().getDrawable(R.drawable.enabled_button);
         stateImage.setImageDrawable(drawable);
         stateImage.setTag(R.drawable.enabled_button);
