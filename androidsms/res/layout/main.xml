@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-    <ImageView
-            android:layout_width="250dip"
-            android:layout_height="250dip"
-            android:id="@+id/toggleState" android:layout_gravity="center" android:src="@drawable/disabled_button"
-            android:maxHeight="50dip" android:onClick="toggleStateClicked"/>
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center_horizontal" android:background="@drawable/background">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SMS Notifier"
+            android:id="@+id/appTitle" android:gravity="center_vertical|center_horizontal" android:focusable="false"
+            android:textSize="25dip" android:textStyle="bold" android:padding="5dip"
+            android:textColor="@color/text_color"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enable to speak out any SMS messages. Be sure to disable when not in use to avoid any embarrasments!"
+            android:id="@+id/textView" android:padding="5dip" android:textColor="@color/text_color"/>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+        <ImageView
+                android:layout_width="250dip"
+                android:layout_height="250dip"
+                android:id="@+id/toggleState" android:layout_gravity="center" android:src="@drawable/disabled_button"
+                android:maxHeight="50dip" android:onClick="toggleStateClicked" android:baselineAlignBottom="false"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
 </LinearLayout>

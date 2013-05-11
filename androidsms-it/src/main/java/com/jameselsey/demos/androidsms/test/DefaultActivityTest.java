@@ -1,6 +1,7 @@
 package com.jameselsey.demos.androidsms.test;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.widget.ImageView;
 import com.jameselsey.demos.androidsms.R;
 import com.jameselsey.demos.androidsms.activity.DefaultActivity;
 import com.jayway.android.robotium.solo.Solo;
@@ -39,15 +40,18 @@ public class DefaultActivityTest extends ActivityInstrumentationTestCase2<Defaul
 
     public void testEnableSmsMonitoring() {
         solo.clickOnImage(0);
+        solo.waitForView(ImageView.class);
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.enabled_button);
     }
 
     public void testDisableSmsMonitoring() {
         // enable it first
         solo.clickOnImage(0);
+        solo.waitForView(ImageView.class);
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.enabled_button);
 
         solo.clickOnImage(0);
+        solo.waitForView(ImageView.class);
         assertThat(solo.getImage(0).getTag()).isEqualTo(R.drawable.disabled_button);
     }
 }
